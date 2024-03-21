@@ -20,10 +20,7 @@ const Map = () => {
         for (let x = 0; x < p.width; x++) {
           for (let y = 0; y < p.height; y++) {
             const index = (x + y * p.width) * 4;
-            p.pixels[index] = p.random(255);
-            p.pixels[index + 1] = p.random(255);
-            p.pixels[index + 2] = p.random(255);
-            p.pixels[index + 3] = 255;
+            p.set(x, y, p.color(255 * Math.random()));
           }
         }
         p.updatePixels();
