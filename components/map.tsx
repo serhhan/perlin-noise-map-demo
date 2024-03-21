@@ -1,7 +1,7 @@
 "use client";
 
 // Import the terrainRanges array
-import { terrainRanges } from "@/constants/terrain-ranges";
+import { spaceTerrainRanges } from "@/constants/terrain-ranges";
 import { useEffect, useRef } from "react";
 import p5 from "p5";
 
@@ -11,7 +11,7 @@ const Map = () => {
   useEffect(() => {
     const myP5 = new p5((p) => {
       // Convert terrainRanges colors to p5 Colors
-      const p5TerrainRanges = terrainRanges.map((range) => ({
+      const p5TerrainRanges = spaceTerrainRanges.map((range) => ({
         ...range,
         startColor: p.color(...range.startColor),
         endColor: p.color(...range.endColor),
@@ -21,7 +21,6 @@ const Map = () => {
         p.createCanvas(600, 600);
         p.noiseDetail(9, 0.5);
         p.noLoop();
-        p.noiseSeed(11189610);
       };
 
       p.draw = () => {
