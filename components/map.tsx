@@ -19,15 +19,17 @@ const Map = () => {
 
       p.setup = () => {
         p.createCanvas(600, 600);
+        p.noiseDetail(9, 0.5);
         p.noLoop();
-        p.noiseSeed(11199610);
+        p.noiseSeed(11189610);
       };
 
       p.draw = () => {
+        const zoomFactor = 100;
         p.loadPixels();
         for (let x = 0; x < p.width; x++) {
           for (let y = 0; y < p.height; y++) {
-            const noiseValue = p.noise(x / 100, y / 100);
+            const noiseValue = p.noise(x / zoomFactor, y / zoomFactor);
             let terrainColor = p.color(0); // Default color if no range matches
 
             // Find the appropriate terrain range based on the noise value
