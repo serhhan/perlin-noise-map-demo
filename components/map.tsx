@@ -12,9 +12,9 @@ const Map = () => {
     const myP5 = new p5((p) => {
       p.setup = () => {
         p.createCanvas(600, 600);
-        p.pixelDensity(1); // Ensures that the loop covers all pixels on the screen
         p.background(200);
         p.noLoop();
+        p.noiseSeed(11199610); // to have same noise pattern every time
       };
 
       p.draw = () => {
