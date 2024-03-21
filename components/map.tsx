@@ -22,7 +22,19 @@ const Map = () => {
         for (let x = 0; x < p.width; x++) {
           for (let y = 0; y < p.height; y++) {
             const noiseValue = p.noise(x / zoomFactor, y / zoomFactor);
-            p.set(x, y, p.color(255 * noiseValue));
+
+            let terrainColor;
+            if (noiseValue < 0.4) {
+              terrainColor = p.color(30, 176, 251);
+            } else if (noiseValue < 0.5) {
+              terrainColor = p.color(255, 246, 193);
+            } else if (noiseValue < 0.7) {
+              terrainColor = p.color(118, 239, 124);
+            } else {
+              terrainColor = p.color(22, 181, 141);
+            }
+
+            p.set(x, y, terrainColor);
           }
         }
         p.updatePixels();
