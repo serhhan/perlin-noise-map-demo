@@ -6,6 +6,8 @@ import p5 from "p5";
 const Map = () => {
   const sketchRef = useRef(null);
 
+  let zoomFactor = 100;
+
   useEffect(() => {
     const myP5 = new p5((p) => {
       p.setup = () => {
@@ -19,8 +21,8 @@ const Map = () => {
         p.loadPixels();
         for (let x = 0; x < p.width; x++) {
           for (let y = 0; y < p.height; y++) {
-            const index = (x + y * p.width) * 4;
-            p.set(x, y, p.color(255 * Math.random()));
+            const noiseValue = p.noise(x / zoomFactor, y / zoomFactor);
+            p.set(x, y, p.color(255 * noiseValue));
           }
         }
         p.updatePixels();
